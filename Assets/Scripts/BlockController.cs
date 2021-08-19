@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//selam hakanaaa
+//selam aag
 public class  BlockController: MonoBehaviour
 {
     public MeshRenderer mr;
