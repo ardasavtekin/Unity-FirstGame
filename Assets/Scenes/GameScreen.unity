@@ -170,7 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 91871144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49019dcc6bc174e77b4f2b0813fefefd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f904f9134d494ea49e849b3725ef40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuCanvas: {fileID: 436095746}
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 436095749}
   - component: {fileID: 436095748}
   m_Layer: 5
-  m_Name: PauseMenuCanvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,7 +438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: 2}
+  m_AnchoredPosition: {x: -0.0002593994, y: 2}
   m_SizeDelta: {x: -0.0005187988, y: -415.61072}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436095748
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1603970220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49019dcc6bc174e77b4f2b0813fefefd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f904f9134d494ea49e849b3725ef40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuCanvas: {fileID: 436095746}

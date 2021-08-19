@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
-{
+public class SceneManagement : MonoBehaviour
+{ //ardaarda
     public GameObject PauseMenuCanvas;
     public GameObject PauseMenuButton;
     public GameObject ResumeButton;
@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
 
     }
 
-
+    
     public void changeScene(int sceneId)
     {
         SceneManager.LoadScene(sceneId);
