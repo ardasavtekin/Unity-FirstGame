@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
-{ //arda
+{ //ardaarda
     public GameObject PauseMenuCanvas;
     public GameObject PauseMenuButton;
     public GameObject ResumeButton;
