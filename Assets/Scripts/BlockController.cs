@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //selam aag 2. kex değişti
 public class  BlockController: MonoBehaviour
@@ -15,9 +16,12 @@ public class  BlockController: MonoBehaviour
     public List<GameObject> yEksenindekiler;
     public List<GameObject> zEksenindekiler;
 
+    public static bool GameOverY;
+
     void Start()
     {
         StartCoroutine( MoveY());
+        GameOverY = false;
     }
     void Update()
     {
@@ -43,7 +47,19 @@ public class  BlockController: MonoBehaviour
                     int y = Mathf.RoundToInt(piece.position.y);
                     int z = Mathf.RoundToInt(piece.position.z);
                     Manager.Instance.Grid[x, y, z] = true;
+
                     
+                    if (piece.position.y >= 27)
+                    {
+                        GameOverY = true;
+                        if (BlockController.GameOverY)
+                        {
+                            int sceneId = 2;
+                            SceneManager.LoadScene(sceneId);
+                        }
+
+                    }
+
                     if (listPiece.IndexOf(piece) == 0)
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
