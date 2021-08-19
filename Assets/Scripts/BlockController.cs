@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//selam aag 2. kex değişti
+//selam aag 2. kex değiştiffsgh
 public class  BlockController: MonoBehaviour
 {
     public MeshRenderer mr;
