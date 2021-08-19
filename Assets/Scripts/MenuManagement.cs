@@ -5,12 +5,14 @@ using UnityEngine;
 public class MenuManagement : MonoBehaviour
 {
     public GameObject PauseMenuCanvas;
+    public GameObject SettingsMenuCanvas;
     public GameObject PauseMenuButton;
     public GameObject ResumeButton;
 
     public void Start()
     {
         PauseMenuCanvas.SetActive(false);
+        SettingsMenuCanvas.SetActive(false);
         PauseMenuButton.SetActive(true);
 
 
