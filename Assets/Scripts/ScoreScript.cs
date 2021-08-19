@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreScript : MonoBehaviour
 {
     public static int perscore= 5;
     public static int scoreValue = 0;
+    private int highestScore = 0;
+    public TextMeshProUGUI highestScoreText;
+    
+
     Text scoreText;
     // Start is called before the first frame update
     private void Start()
@@ -17,6 +22,13 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         scoreText.text = ""+scoreValue;
-
+        Debug.Log(scoreValue);
+        if (highestScore < scoreValue)
+        {
+            highestScore = scoreValue;
+            highestScoreText.text = "" + highestScore;
+                    
+        }
+        Debug.Log(highestScore);
     }
 }
