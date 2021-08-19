@@ -47,12 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f174638b4c8694985246e773a966a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mr: {fileID: 0}
   listPiece:
   - {fileID: 4623808773503311119}
   - {fileID: 3573143793124681284}
   - {fileID: 5041995260749793867}
   - {fileID: 1918157673334480950}
-  listGameObject: []
+  xEksenindekiler: []
+  yEksenindekiler: []
+  zEksenindekiler: []
 --- !u!1001 &238230198295303064
 PrefabInstance:
   m_ObjectHideFlags: 0
