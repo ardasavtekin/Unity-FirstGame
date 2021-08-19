@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
-{ //ardaarda
+public class MenuManagement : MonoBehaviour
+{
     public GameObject PauseMenuCanvas;
     public GameObject PauseMenuButton;
     public GameObject ResumeButton;
@@ -12,19 +11,19 @@ public class MenuManager : MonoBehaviour
     public void Start()
     {
         PauseMenuCanvas.SetActive(false);
+        PauseMenuButton.SetActive(true);
 
-    }
 
 
-    public void changeScene(int sceneId)
-    {
-        SceneManager.LoadScene(sceneId);
     }
 
     public void PauseGame()
     {
-        PauseMenuCanvas.SetActive(true);
+
         PauseMenuButton.SetActive(false);
+        PauseMenuCanvas.SetActive(true);
+
+
         Time.timeScale = 0;
     }
 
