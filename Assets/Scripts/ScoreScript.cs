@@ -22,13 +22,13 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         scoreText.text = ""+scoreValue;
-        Debug.Log(scoreValue);
+        
         if (highestScore < scoreValue)
         {
             highestScore = scoreValue;
             highestScoreText.text = "" + highestScore;
                     
         }
-        Debug.Log(highestScore);
+        
     }
 }
