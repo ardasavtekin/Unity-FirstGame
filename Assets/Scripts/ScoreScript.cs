@@ -8,10 +8,8 @@ public class ScoreScript : MonoBehaviour
 {
     public static int perscore= 5;
     public static int scoreValue = 0;
-    private int highestScore = 0;
-    public TextMeshProUGUI highestScoreText;
     
-
+    
     Text scoreText;
     // Start is called before the first frame update
     private void Start()
@@ -21,17 +19,6 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         scoreText.text = "" + scoreValue;
-        
-
-        if (highestScore < scoreValue)
-        {
-            highestScore = scoreValue;
-            
-            PlayerPrefs.SetInt("totalScoreKey", highestScore);
-            highestScoreText.text = "" + PlayerPrefs.GetInt("totalScoreKey");
-        }
-        
     }
 }

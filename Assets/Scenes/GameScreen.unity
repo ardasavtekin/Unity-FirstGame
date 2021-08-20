@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.5645241, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -917,7 +917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -49}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648350606
@@ -1555,7 +1555,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuCanvas: {fileID: 436095746}
-  SettingsMenuCanvas: {fileID: 0}
   PauseMenuButton: {fileID: 91871144}
   ResumeButton: {fileID: 1603970220}
 --- !u!4 &1124518855
@@ -2335,7 +2334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8184f7f56922b3d40913419eef8aa784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highestScoreText: {fileID: 0}
 --- !u!1 &1603970220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,7 +2850,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuCanvas: {fileID: 436095746}
-  SettingsMenuCanvas: {fileID: 0}
   PauseMenuButton: {fileID: 91871144}
   ResumeButton: {fileID: 1603970220}
   GameOverCanvas: {fileID: 35142919}
@@ -3021,7 +3018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2067271269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3039,7 +3036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -49}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067271270
