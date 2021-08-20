@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //selam aag 2. kex değiştiffsgh
 public class  BlockController: MonoBehaviour
@@ -14,6 +15,7 @@ public class  BlockController: MonoBehaviour
     public List<GameObject> xEksenindekiler;
     public List<GameObject> yEksenindekiler;
     public List<GameObject> zEksenindekiler;
+
 
     void Start()
     {
@@ -43,6 +45,12 @@ public class  BlockController: MonoBehaviour
                     int y = Mathf.RoundToInt(piece.position.y);
                     int z = Mathf.RoundToInt(piece.position.z);
                     Manager.Instance.Grid[x, y, z] = true;
+
+                    if(piece.position.y >= 27)
+                    {
+                        int sceneId = 2;
+                        SceneManager.LoadScene(sceneId);
+                    }
                     
                     if (listPiece.IndexOf(piece) == 0)
                     {
