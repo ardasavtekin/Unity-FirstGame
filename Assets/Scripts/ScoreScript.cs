@@ -21,8 +21,10 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         scoreText.text = ""+scoreValue;
-        
+        Debug.Log(scoreValue);
+
         if (highestScore < scoreValue)
         {
             highestScore = scoreValue;
