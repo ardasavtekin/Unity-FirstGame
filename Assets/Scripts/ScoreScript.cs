@@ -22,14 +22,15 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
 
-        scoreText.text = ""+scoreValue;
+        scoreText.text = "" + scoreValue;
         
 
         if (highestScore < scoreValue)
         {
             highestScore = scoreValue;
-            highestScoreText.text = "" + highestScore;
-                    
+            
+            PlayerPrefs.SetInt("totalScoreKey", highestScore);
+            highestScoreText.text = "" + PlayerPrefs.GetInt("totalScoreKey");
         }
         
     }

@@ -21,8 +21,8 @@ public class Manager : MonoBehaviour
     
     public bool[, , ] Grid = new bool[GridSizeX,GridSizeY,GridSizeZ];
     
-    public string[,,] ColorGrid = new string[GridSizeX, GridSizeY, GridSizeZ];
-    public GameObject[,,] gameobjectGrid = new GameObject[GridSizeX, GridSizeY, GridSizeZ];
+    public string[,,] ColorGrid = new string[GridSizeX + 1, GridSizeY, GridSizeZ + 1];
+    public GameObject[,,] gameobjectGrid = new GameObject[GridSizeX + 1, GridSizeY, GridSizeZ + 1];
 
 
     private GameObject[,,] previewDisplay = new GameObject[GridSizeX, GridSizeY, GridSizeZ];
