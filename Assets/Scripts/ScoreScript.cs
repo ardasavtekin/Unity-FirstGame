@@ -23,7 +23,7 @@ public class ScoreScript : MonoBehaviour
     {
 
         scoreText.text = ""+scoreValue;
-        Debug.Log(scoreValue);
+        
 
         if (highestScore < scoreValue)
         {

@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuManagement : MonoBehaviour
+public class CanvasManager : MonoBehaviour
 {
     public GameObject PauseMenuCanvas;
+    
     public GameObject PauseMenuButton;
     public GameObject ResumeButton;
+    [SerializeField]  public GameObject GameOverCanvas;
 
+    public void Awake()
+    {
+        GameOverCanvas.SetActive(false);
+    }
     public void Start()
     {
         PauseMenuCanvas.SetActive(false);
+        
+        
         PauseMenuButton.SetActive(true);
 
 
