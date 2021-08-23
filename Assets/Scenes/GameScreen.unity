@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.5645241, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 504113988}
   m_Layer: 0
   m_Name: endPoint
-  m_TagString: Untagged
+  m_TagString: cloud
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1050,6 +1050,8 @@ MonoBehaviour:
     type: 3}
   blueBlock: {fileID: 2445773162326094353, guid: 0626d2e6f7e93524ba6c3cf54aff5c70,
     type: 3}
+  ListHistory: []
+  yFalling: []
   gameSpeed: 0.583
   listPrefabs:
   - {fileID: 92888602801722747, guid: c2fd153dfd7cce6419a42ba1459d8f98, type: 3}
@@ -1101,7 +1103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  rotateCam: 0
   ground: {fileID: 963194225}
   quad: {fileID: 1694664936}
 --- !u!1 &705507993
@@ -1273,7 +1274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2593251, y: -0.21794799, z: 0.055124577, w: 0.93926066}
-  m_LocalPosition: {x: 58.4, y: 89.4, z: -105.95}
+  m_LocalPosition: {x: 25.5, y: 45.2, z: -39.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1833,7 +1834,7 @@ GameObject:
   - component: {fileID: 1315330001}
   m_Layer: 0
   m_Name: CloudGenerator
-  m_TagString: Untagged
+  m_TagString: cloud
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1860,7 +1861,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315329999}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63a886e41c9420e45aa28796b27bd938, type: 3}
   m_Name: 

@@ -13,7 +13,9 @@ public class Manager : MonoBehaviour
     [SerializeField] public GameObject yellowBlock;
     [SerializeField] public GameObject blueBlock;
 
-  
+    public List<GameObject> ListHistory;
+
+    public List<GameObject> yFalling;
 
     public const int GridSizeX = 9;
     public const int GridSizeY = 35;
@@ -110,5 +112,6 @@ public class Manager : MonoBehaviour
         
         Current = newBlock;
     }
+   
    
 }

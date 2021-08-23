@@ -9,8 +9,6 @@ public class  BlockController: MonoBehaviour
     public MeshRenderer mr;
     public List<Transform> ListPiece => listPiece;
     [SerializeField] private List<Transform> listPiece = new List<Transform>();
-    //public List<GameObject> ListBlocks => listBlocks;
-    //[SerializeField] private List<GameObject> listBlocks = new List<GameObject>();
 
     public List<GameObject> xEksenindekiler;
     public List<GameObject> yEksenindekiler;
@@ -46,6 +44,8 @@ public class  BlockController: MonoBehaviour
                     int z = Mathf.RoundToInt(piece.position.z);
                     Manager.Instance.Grid[x, y, z] = true;
 
+                    
+
                     if(piece.position.y >= 27)
                     {
                         int sceneId = 2;
@@ -56,6 +56,7 @@ public class  BlockController: MonoBehaviour
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
 
+                        Manager.Instance.ListHistory.Add(piece.gameObject);
 
                         Manager.Instance.ColorGrid[x, y, z] = "red";
                         for (int i = x + 1; i <= Manager.GridSizeX; i++)
@@ -137,17 +138,17 @@ public class  BlockController: MonoBehaviour
                             
                             foreach(var item in xEksenindekiler)
                             {
-                               
-
-                                
                                 ScoreScript.scoreValue += ScoreScript.perscore;
+                                
                                 GameObject.Destroy(item.gameObject);
                                 var j = Mathf.RoundToInt(item.transform.position.x);
                                 var k = Mathf.RoundToInt(item.transform.position.y);
                                 var l = Mathf.RoundToInt(item.transform.position.z);
-                                
+
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
+
+                                Manager.Instance.ListHistory.Remove(item);
 
                             }
                             xEksenindekiler.Clear();
@@ -167,6 +168,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             yEksenindekiler.Clear();
                         }
@@ -185,6 +188,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             zEksenindekiler.Clear();
                         }
@@ -197,6 +202,9 @@ public class  BlockController: MonoBehaviour
                     if (listPiece.IndexOf(piece) == 1)
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
+
+                        Manager.Instance.ListHistory.Add(piece.gameObject);
+
                         Manager.Instance.ColorGrid[x, y, z] = "green";
                         for (int i = x + 1; i <= Manager.GridSizeX; i++)
                         {
@@ -285,6 +293,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             xEksenindekiler.Clear();
                         }
@@ -301,6 +311,8 @@ public class  BlockController: MonoBehaviour
 
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
+
+                                Manager.Instance.ListHistory.Remove(item);
 
                             }
                             yEksenindekiler.Clear();
@@ -319,6 +331,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             zEksenindekiler.Clear();
                         }
@@ -329,6 +343,9 @@ public class  BlockController: MonoBehaviour
                     if (listPiece.IndexOf(piece) == 2)
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
+
+                        Manager.Instance.ListHistory.Add(piece.gameObject);
+
                         Manager.Instance.ColorGrid[x, y, z] = "yellow";
                         for (int i = x + 1; i <= Manager.GridSizeX; i++)
                         {
@@ -417,6 +434,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             xEksenindekiler.Clear();
                         }
@@ -433,6 +452,8 @@ public class  BlockController: MonoBehaviour
 
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
+
+                                Manager.Instance.ListHistory.Remove(item);
 
                             }
                             yEksenindekiler.Clear();
@@ -451,6 +472,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             zEksenindekiler.Clear();
                         }
@@ -461,6 +484,9 @@ public class  BlockController: MonoBehaviour
                     if (listPiece.IndexOf(piece) == 3)
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
+
+                        Manager.Instance.ListHistory.Add(piece.gameObject);
+
                         Manager.Instance.ColorGrid[x, y, z] = "blue";
                         for (int i = x + 1; i <= Manager.GridSizeX; i++)
                         {
@@ -549,6 +575,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             xEksenindekiler.Clear();
                         }
@@ -565,6 +593,8 @@ public class  BlockController: MonoBehaviour
 
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
+
+                                Manager.Instance.ListHistory.Remove(item);
 
                             }
                             yEksenindekiler.Clear();
@@ -583,6 +613,8 @@ public class  BlockController: MonoBehaviour
                                 Manager.Instance.ColorGrid[j, k, l] = "";
                                 Manager.Instance.Grid[j, k, l] = false;
 
+                                Manager.Instance.ListHistory.Remove(item);
+
                             }
                             zEksenindekiler.Clear();
                         }
@@ -591,15 +623,13 @@ public class  BlockController: MonoBehaviour
                         zEksenindekiler.Clear();
 
                     }
-                    
-
-
-
                 }
-                Manager.Instance.Spawn();
+              
+                
                 break;
             }
         }
+        Manager.Instance.Spawn();
     }
 
     private List<Vector3> GetPreviewPosition()
@@ -621,6 +651,9 @@ public class  BlockController: MonoBehaviour
         position.y--;
         transform.position = position;
     }
+
+  
+
     /*public void MoveXZ()
     {
         

@@ -16,6 +16,9 @@ public class PlayerInput : MonoBehaviour
     //public bool IsPressRotateZ => Input.GetKeyDown(KeyCode.D);
     public bool IsPressRotateY => Input.GetKeyDown(KeyCode.S);
     //public bool IsPressRotateX => Input.GetKeyDown(KeyCode.A);
+    public bool IsPressG => Input.GetKeyDown(KeyCode.G);
+
+    
 
     void Start()
     {
@@ -24,6 +27,7 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             
@@ -33,58 +37,120 @@ public class PlayerInput : MonoBehaviour
         {
             Time.timeScale = 1;
         }
-        if (IsPressLeft)
+
+        if (CamMovement.rotateCam == false)
         {
-            var current = Manager.Instance.Current.transform;
-            var position = current.position;
-            var value = -1;
-            var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
-            if (isMovable)
+            if (IsPressLeft)
             {
-                position.x += value;
-                //position += new Vector3(-1, 0, 0);
-                current.position = position;
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+                var value = -1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.x += value;
+                    //position += new Vector3(-1, 0, 0);
+                    current.position = position;
+                }
+            }
+            if (IsPressRight)
+            {
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+
+                var value = 1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.x += value;
+                    //position += new Vector3(+1, 0, 0);
+                    current.position = position;
+                }
+            }
+            if (IsPressUp)
+            {
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+                var value = 1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.z += value;
+                    //position += new Vector3(0, 0, +1);
+                    current.position = position;
+                }
+            }
+            if (IsPressDown)
+            {
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+                var value = -1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.z += value;
+                    //position += new Vector3(0, 0, -1);
+                    current.position = position;
+                }
+            } 
+
+         } else if (CamMovement.rotateCam == true)
+        {
+            if (IsPressDown)
+            {
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+                var value = -1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.x += value;
+                    //position += new Vector3(-1, 0, 0);
+                    current.position = position;
+                }
+            }
+            if (IsPressUp)
+            {
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+
+                var value = 1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.x += value;
+                    //position += new Vector3(+1, 0, 0);
+                    current.position = position;
+                }
+            }
+            if (IsPressLeft)
+            {
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+                var value = 1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.z += value;
+                    //position += new Vector3(0, 0, +1);
+                    current.position = position;
+                }
+            }
+            if (IsPressRight)
+            {
+                var current = Manager.Instance.Current.transform;
+                var position = current.position;
+                var value = -1;
+                var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
+                if (isMovable)
+                {
+                    position.z += value;
+                    //position += new Vector3(0, 0, -1);
+                    current.position = position;
+                }
             }
         }
-        if (IsPressRight)
-        {
-            var current = Manager.Instance.Current.transform;
-            var position = current.position;
-            var value = 1;
-            var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
-            if (isMovable)
-            {
-                position.x += value;
-                //position += new Vector3(+1, 0, 0);
-                current.position = position;
-            }
-        }
-        if (IsPressUp)
-        {
-            var current = Manager.Instance.Current.transform;
-            var position = current.position;
-            var value = 1;
-            var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
-            if (isMovable)
-            {
-                position.z += value;
-                //position += new Vector3(0, 0, +1);
-                current.position = position;
-            }
-        }
-        if (IsPressDown)
-        {
-            var current = Manager.Instance.Current.transform;
-            var position = current.position;
-            var value = -1;
-            var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
-            if (isMovable)
-            {
-                position.z += value;
-                //position += new Vector3(0, 0, -1);
-                current.position = position;
-            }
-        }
+       
         
         //ROTATE
         /*if (IsPressRotateZ) 
@@ -188,30 +254,82 @@ public class PlayerInput : MonoBehaviour
     {
         var result = new List<Vector3>();
         var listPiece = Manager.Instance.Current.ListPiece;
-        if (IsPressLeft || IsPressRight)
+        if (CamMovement.rotateCam == false)
         {
-            foreach (var piece in listPiece)
-
+            if (IsPressLeft || IsPressRight)
             {
-                var position = piece.position;
-                position.x += value;
-                result.Add(position);
+                foreach (var piece in listPiece)
 
+                {
+                    var position = piece.position;
+                    position.x += value;
+                    result.Add(position);
+
+                }
+            }
+            else
+            {
+                foreach (var piece in listPiece)
+                {
+                    var position = piece.position;
+                    position.z += value;
+                    result.Add(position);
+
+                }
             }
         }
-        else
+        if(CamMovement.rotateCam == true)
         {
-            foreach (var piece in listPiece)
+            if (IsPressLeft)
             {
-                var position = piece.position;
-                position.z += value;
-                result.Add(position);
+                foreach (var piece in listPiece)
 
+                {
+                    var position = piece.position;
+                    position.z += 1;
+                    result.Add(position);
+
+                }
+            }
+            if (IsPressRight)
+            {
+                foreach (var piece in listPiece)
+
+                {
+                    var position = piece.position;
+                    position.z += -1;
+                    result.Add(position);
+
+                }
+            }
+            if (IsPressUp)
+            {
+                foreach (var piece in listPiece)
+
+                {
+                    var position = piece.position;
+                    position.x += 1;
+                    result.Add(position);
+
+                }
+            }
+            if (IsPressDown)
+            {
+                foreach (var piece in listPiece)
+
+                {
+                    var position = piece.position;
+                    position.x += -1;
+                    result.Add(position);
+
+                }
             }
         }
-
+     
         return result;
     }
+    
+    
     /*private void RotateZ()
     {
         var current = Manager.Instance.Current.transform;
