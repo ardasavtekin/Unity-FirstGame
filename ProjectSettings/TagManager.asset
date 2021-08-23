@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PauseButton
+  - ground
+  - quad
   layers:
   - Default
   - TransparentFX

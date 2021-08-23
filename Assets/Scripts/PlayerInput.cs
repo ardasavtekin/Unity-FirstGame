@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerInput : MonoBehaviour
 {
+
+    
+
     public bool IsPressLeft => Input.GetKeyDown(KeyCode.LeftArrow);
     public bool IsPressRight => Input.GetKeyDown(KeyCode.RightArrow);
     public bool IsPressUp => Input.GetKeyDown(KeyCode.UpArrow);
@@ -15,7 +19,6 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -23,6 +26,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            
             Time.timeScale = 10f;
         }
         if(Input.GetKeyUp(KeyCode.Space))
@@ -81,6 +85,7 @@ public class PlayerInput : MonoBehaviour
                 current.position = position;
             }
         }
+        
         //ROTATE
         /*if (IsPressRotateZ) 
         {
@@ -229,3 +234,4 @@ public class PlayerInput : MonoBehaviour
         current.eulerAngles = angles;
     }*/
 }
+
