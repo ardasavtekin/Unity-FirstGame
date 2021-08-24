@@ -7,11 +7,11 @@ public class Manager : MonoBehaviour
     
     public static Manager Instance { get; private set; }
     public BlockController Current { get; set; }
-    
-    [SerializeField] public GameObject redBlock;
-    [SerializeField] public GameObject greenBlock;
-    [SerializeField] public GameObject yellowBlock;
-    [SerializeField] public GameObject blueBlock;
+
+    public Material material1;
+    public Material material2;
+    public Material material3;
+    public Material material4;
 
     public List<GameObject> ListHistory;
 

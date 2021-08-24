@@ -8,6 +8,10 @@ TagManager:
   - ground
   - quad
   - cloud
+  - Material4
+  - Material3
+  - Material2
+  - Material1
   layers:
   - Default
   - TransparentFX

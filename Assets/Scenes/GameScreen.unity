@@ -1092,14 +1092,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37425244681e96f42b1d40964fe9a1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redBlock: {fileID: 5952982074652951577, guid: a9d5f6f0365ce2c44b3cb32e3faa87cb,
-    type: 3}
-  greenBlock: {fileID: 1877100259160161762, guid: ae33e878bbc3a4a4cb747e9f14389a9c,
-    type: 3}
-  yellowBlock: {fileID: 3988470134877679746, guid: de8a319a90267924cb5872d3a609d2e7,
-    type: 3}
-  blueBlock: {fileID: 2445773162326094353, guid: 0626d2e6f7e93524ba6c3cf54aff5c70,
-    type: 3}
+  material1: {fileID: 2100000, guid: f852ed7138820044bbd4ecbc8ec53fe6, type: 2}
+  material2: {fileID: 2100000, guid: c7c130d51ac74e14d8ff6adc16e58eb8, type: 2}
+  material3: {fileID: 2100000, guid: 37e2c334b5262a74e85f12f614cdf6d0, type: 2}
+  material4: {fileID: 2100000, guid: ae793d7a882fbaf48903622e7bef63fa, type: 2}
   ListHistory: []
   yFalling: []
   gameSpeed: 0.583
