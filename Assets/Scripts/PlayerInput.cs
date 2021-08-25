@@ -44,20 +44,22 @@ public class PlayerInput : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch finger = Input.GetTouch(0);
+            int x = Mathf.RoundToInt(finger.deltaPosition.x);
+            int y = Mathf.RoundToInt(finger.deltaPosition.y);
 
-            if (finger.deltaPosition.x > 40f)
+            if (x > 40)
             {
                 IsPressRight = true;
             }
-            if(finger.deltaPosition.x < -40f)
+            if(x < -40)
             {
                 IsPressLeft = true;
             }
-            if (finger.deltaPosition.y > 40f)
+            if (y > 40)
             {
                 IsPressUp = true;
             }
-            if (finger.deltaPosition.y < -40f)
+            if (y < -40)
             {
                 IsPressDown = true;
             }
@@ -73,9 +75,10 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable)
                 {
-                    position.x += value;
+                 var NewXPos = Mathf.Clamp(position.x + value, -0.1f, 8.1f);
+                    //position.x += value;
                     //position += new Vector3(-1, 0, 0);
-                    current.position = position;
+                    current.position = new Vector3(NewXPos, current.position.y, current.position.z);
                     IsPressLeft = false;
                 }
             }
@@ -88,9 +91,10 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable )
                 {
-                    position.x += value;
+                    var NewXPos = Mathf.Clamp(position.x + value, -0.1f, 8.1f);
+                    //position.x += value;
                     //position += new Vector3(+1, 0, 0);
-                    current.position = position;
+                    current.position = new Vector3(NewXPos, current.position.y, current.position.z);
                     IsPressRight = false;
                 }        
             }
@@ -103,9 +107,11 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable)
                 {
-                    position.z += value;
+                    var NewZPos = Mathf.Clamp(position.z + value, -0.1f, 8.1f);
+
+                    // position.z += value;
                     //position += new Vector3(0, 0, +1);
-                    current.position = position;
+                    current.position = new Vector3(current.position.x, current.position.y, NewZPos);
                     IsPressUp = false;
                 }
             }
@@ -117,9 +123,11 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable)
                 {
-                    position.z += value;
+                    var NewZPos = Mathf.Clamp(position.z + value, -0.1f, 8.1f);
+
+                    //position.z += value;
                     //position += new Vector3(0, 0, -1);
-                    current.position = position;
+                    current.position = new Vector3(current.position.x, current.position.y, NewZPos);
                     IsPressDown = false;
                 }
             } 
