@@ -1749,6 +1749,7 @@ public class  BlockController: MonoBehaviour
             
 
         }
+        Time.timeScale = 1;
         Manager.Instance.Spawn();
     }
 

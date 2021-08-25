@@ -47,19 +47,19 @@ public class PlayerInput : MonoBehaviour
             int x = Mathf.RoundToInt(finger.deltaPosition.x);
             int y = Mathf.RoundToInt(finger.deltaPosition.y);
 
-            if (x > 40)
+            if (x > 35)
             {
                 IsPressRight = true;
             }
-            if(x < -40)
+            if(x < -35)
             {
                 IsPressLeft = true;
             }
-            if (y > 40)
+            if (y > 35)
             {
                 IsPressUp = true;
             }
-            if (y < -40)
+            if (y < -35)
             {
                 IsPressDown = true;
             }

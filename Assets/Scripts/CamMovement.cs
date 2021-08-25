@@ -41,6 +41,7 @@ public class CamMovement : MonoBehaviour
             }
             
         }
+       
 
     }
 
@@ -79,6 +80,12 @@ public class CamMovement : MonoBehaviour
                 rotateCam = false;
             }
 
+        
+    }
+    public void speed()
+    {       
+        Time.timeScale = 10f;
+        
         
     }
 
