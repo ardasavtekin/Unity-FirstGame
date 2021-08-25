@@ -9,13 +9,16 @@ public class CamMovement : MonoBehaviour
 
     public GameObject ground;
     public GameObject quad;
+    public GameObject target2;
+    public GameObject rawImage;
     
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindWithTag("ground");
-        
+        target2 = GameObject.FindWithTag("MainCam");
+        rawImage = GameObject.FindWithTag("RawImage");
 
 
     }
@@ -46,6 +49,8 @@ public class CamMovement : MonoBehaviour
             
             ground.transform.RotateAround(target.transform.position, Vector3.up, 90) ;
             quad.transform.RotateAround(target.transform.position, Vector3.up , 90);
+            target2.SetActive(false);
+            rawImage.SetActive(false);
             
     }
 
@@ -53,6 +58,8 @@ public class CamMovement : MonoBehaviour
     {
         ground.transform.RotateAround(target.transform.position, Vector3.up, -90);
         quad.transform.RotateAround(target.transform.position, Vector3.up, -90);
+        target2.SetActive(true);
+        rawImage.SetActive(true);
         
     }
 
