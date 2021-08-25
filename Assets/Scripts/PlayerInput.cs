@@ -8,19 +8,20 @@ public class PlayerInput : MonoBehaviour
 
     
 
-    public bool IsPressLeft => Input.GetKeyDown(KeyCode.LeftArrow);
+    //public bool IsPressLeft => Input.GetKeyDown(KeyCode.LeftArrow);
     //public bool IsPressRight => Input.GetKeyDown(KeyCode.RightArrow);
-    public bool IsPressUp => Input.GetKeyDown(KeyCode.UpArrow);
-    public bool IsPressDown => Input.GetKeyDown(KeyCode.DownArrow);
+    //public bool IsPressUp => Input.GetKeyDown(KeyCode.UpArrow);
+    //public bool IsPressDown => Input.GetKeyDown(KeyCode.DownArrow);
 
     //public bool IsPressRotateZ => Input.GetKeyDown(KeyCode.D);
     public bool IsPressRotateY => Input.GetKeyDown(KeyCode.S);
     //public bool IsPressRotateX => Input.GetKeyDown(KeyCode.A);
     public bool IsPressG => Input.GetKeyDown(KeyCode.G);
 
-    public bool IsPressRight;
-
-   
+    public bool IsPressRight= false;
+    public bool IsPressLeft = false;
+    public bool IsPressUp = false;
+    public bool IsPressDown = false;
     void Start()
     {
     }
@@ -44,13 +45,22 @@ public class PlayerInput : MonoBehaviour
         {
             Touch finger = Input.GetTouch(0);
 
-            if (finger.deltaPosition.x > 5f)
+            if (finger.deltaPosition.x > 40f)
             {
                 IsPressRight = true;
-                
             }
-            
-            //finger.deltaPosition = finger.position;
+            if(finger.deltaPosition.x < -40f)
+            {
+                IsPressLeft = true;
+            }
+            if (finger.deltaPosition.y > 40f)
+            {
+                IsPressUp = true;
+            }
+            if (finger.deltaPosition.y < -40f)
+            {
+                IsPressDown = true;
+            }
         }
         
             if (CamMovement.rotateCam == false)
@@ -66,6 +76,7 @@ public class PlayerInput : MonoBehaviour
                     position.x += value;
                     //position += new Vector3(-1, 0, 0);
                     current.position = position;
+                    IsPressLeft = false;
                 }
             }
             if (IsPressRight)
@@ -81,7 +92,6 @@ public class PlayerInput : MonoBehaviour
                     //position += new Vector3(+1, 0, 0);
                     current.position = position;
                     IsPressRight = false;
-                    Input.touchCount.Equals(0);
                 }        
             }
             
@@ -96,6 +106,7 @@ public class PlayerInput : MonoBehaviour
                     position.z += value;
                     //position += new Vector3(0, 0, +1);
                     current.position = position;
+                    IsPressUp = false;
                 }
             }
             if (IsPressDown)
@@ -109,6 +120,7 @@ public class PlayerInput : MonoBehaviour
                     position.z += value;
                     //position += new Vector3(0, 0, -1);
                     current.position = position;
+                    IsPressDown = false;
                 }
             } 
 
