@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour
     
 
     public bool IsPressLeft => Input.GetKeyDown(KeyCode.LeftArrow);
-    public bool IsPressRight => Input.GetKeyDown(KeyCode.RightArrow);
+    //public bool IsPressRight => Input.GetKeyDown(KeyCode.RightArrow);
     public bool IsPressUp => Input.GetKeyDown(KeyCode.UpArrow);
     public bool IsPressDown => Input.GetKeyDown(KeyCode.DownArrow);
 
@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour
     //public bool IsPressRotateX => Input.GetKeyDown(KeyCode.A);
     public bool IsPressG => Input.GetKeyDown(KeyCode.G);
 
-    
+    public bool IsPressRight;
 
     void Start()
     {
@@ -27,6 +27,7 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -38,7 +39,17 @@ public class PlayerInput : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        if (CamMovement.rotateCam == false)
+        if (Input.touchCount > 0)
+        {
+            Touch finger = Input.GetTouch(0);
+
+            if (finger.deltaPosition.x > 5f)
+            {
+                IsPressRight = true;
+            }
+        }
+        
+            if (CamMovement.rotateCam == false)
         {
             if (IsPressLeft)
             {
