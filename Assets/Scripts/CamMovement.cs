@@ -63,4 +63,23 @@ public class CamMovement : MonoBehaviour
         
     }
 
+    public void clickButton()
+    {
+        
+            if (rotateCam == false)
+            {
+                camTurn();
+                rotateCam = true;
+
+            }
+            else if (rotateCam == true)
+            {
+
+                camNegativeTurn();
+                rotateCam = false;
+            }
+
+        
+    }
+
 }

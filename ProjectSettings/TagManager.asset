@@ -12,6 +12,8 @@ TagManager:
   - Material3
   - Material2
   - Material1
+  - MainCam
+  - RawImage
   layers:
   - Default
   - TransparentFX
