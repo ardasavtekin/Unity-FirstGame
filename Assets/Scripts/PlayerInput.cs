@@ -20,6 +20,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool IsPressRight;
 
+   
     void Start()
     {
     }
@@ -46,7 +47,10 @@ public class PlayerInput : MonoBehaviour
             if (finger.deltaPosition.x > 5f)
             {
                 IsPressRight = true;
+                
             }
+            
+            //finger.deltaPosition = finger.position;
         }
         
             if (CamMovement.rotateCam == false)
@@ -71,13 +75,16 @@ public class PlayerInput : MonoBehaviour
 
                 var value = 1;
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
-                if (isMovable)
+                if (isMovable )
                 {
                     position.x += value;
                     //position += new Vector3(+1, 0, 0);
                     current.position = position;
-                }
+                    IsPressRight = false;
+                    Input.touchCount.Equals(0);
+                }        
             }
+            
             if (IsPressUp)
             {
                 var current = Manager.Instance.Current.transform;
