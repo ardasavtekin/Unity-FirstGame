@@ -375,13 +375,14 @@ public class PlayerInput : MonoBehaviour
         angles.z += -90;
         current.eulerAngles = angles;
     }*/
-    private void RotateY()
+    public void RotateY()
     {
         var current = Manager.Instance.Current.transform;
         var angles = current.eulerAngles;
         angles.y += -90;
         current.eulerAngles = angles;
     }
+    
     /*private void RotateX()
     {
         var current = Manager.Instance.Current.transform;
