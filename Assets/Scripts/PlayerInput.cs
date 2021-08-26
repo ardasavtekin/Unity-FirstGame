@@ -5,23 +5,20 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-
-    
-
-    //public bool IsPressLeft => Input.GetKeyDown(KeyCode.LeftArrow);
-    //public bool IsPressRight => Input.GetKeyDown(KeyCode.RightArrow);
-    //public bool IsPressUp => Input.GetKeyDown(KeyCode.UpArrow);
-    //public bool IsPressDown => Input.GetKeyDown(KeyCode.DownArrow);
+    public bool IsPressLeft => Input.GetKeyDown(KeyCode.LeftArrow);
+    public bool IsPressRight => Input.GetKeyDown(KeyCode.RightArrow);
+    public bool IsPressUp => Input.GetKeyDown(KeyCode.UpArrow);
+    public bool IsPressDown => Input.GetKeyDown(KeyCode.DownArrow);
 
     //public bool IsPressRotateZ => Input.GetKeyDown(KeyCode.D);
     public bool IsPressRotateY => Input.GetKeyDown(KeyCode.S);
     //public bool IsPressRotateX => Input.GetKeyDown(KeyCode.A);
     public bool IsPressG => Input.GetKeyDown(KeyCode.G);
 
-    public bool IsPressRight= false;
+    /*public bool IsPressRight= false;
     public bool IsPressLeft = false;
     public bool IsPressUp = false;
-    public bool IsPressDown = false;
+    public bool IsPressDown = false;*/
     void Start()
     {
     }
@@ -41,7 +38,7 @@ public class PlayerInput : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        if (Input.touchCount > 0)
+        /*if (Input.touchCount > 0)
         {
             Touch finger = Input.GetTouch(0);
             int x = Mathf.RoundToInt(finger.deltaPosition.x);
@@ -63,7 +60,7 @@ public class PlayerInput : MonoBehaviour
             {
                 IsPressDown = true;
             }
-        }
+        }*/
         
             if (CamMovement.rotateCam == false)
         {
@@ -75,11 +72,12 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable)
                 {
-                 var NewXPos = Mathf.Clamp(position.x + value, -0.1f, 8.1f);
-                    //position.x += value;
+                 //var NewXPos = Mathf.Clamp(position.x + value, -0.1f, 8.1f);
+                    position.x += value;
                     //position += new Vector3(-1, 0, 0);
-                    current.position = new Vector3(NewXPos, current.position.y, current.position.z);
-                    IsPressLeft = false;
+                    //current.position = new Vector3(NewXPos, current.position.y, current.position.z);
+                    //IsPressLeft = false;
+                    current.position = position;
                 }
             }
             if (IsPressRight)
@@ -91,11 +89,12 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable )
                 {
-                    var NewXPos = Mathf.Clamp(position.x + value, -0.1f, 8.1f);
-                    //position.x += value;
+                    //var NewXPos = Mathf.Clamp(position.x + value, -0.1f, 8.1f);
+                    position.x += value;
                     //position += new Vector3(+1, 0, 0);
-                    current.position = new Vector3(NewXPos, current.position.y, current.position.z);
-                    IsPressRight = false;
+                    //current.position = new Vector3(NewXPos, current.position.y, current.position.z);
+                    //IsPressRight = false;
+                    current.position = position;
                 }        
             }
             
@@ -107,12 +106,13 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable)
                 {
-                    var NewZPos = Mathf.Clamp(position.z + value, -0.1f, 8.1f);
+                    //var NewZPos = Mathf.Clamp(position.z + value, -0.1f, 8.1f);
 
-                    // position.z += value;
+                    position.z += value;
                     //position += new Vector3(0, 0, +1);
-                    current.position = new Vector3(current.position.x, current.position.y, NewZPos);
-                    IsPressUp = false;
+                    //current.position = new Vector3(current.position.x, current.position.y, NewZPos);
+                    //IsPressUp = false;
+                    current.position = position;
                 }
             }
             if (IsPressDown)
@@ -123,12 +123,13 @@ public class PlayerInput : MonoBehaviour
                 var isMovable = Manager.Instance.IsInside(GetPreviewPosition(value));
                 if (isMovable)
                 {
-                    var NewZPos = Mathf.Clamp(position.z + value, -0.1f, 8.1f);
+                    //var NewZPos = Mathf.Clamp(position.z + value, -0.1f, 8.1f);
 
-                    //position.z += value;
+                    position.z += value;
                     //position += new Vector3(0, 0, -1);
-                    current.position = new Vector3(current.position.x, current.position.y, NewZPos);
-                    IsPressDown = false;
+                    //current.position = new Vector3(current.position.x, current.position.y, NewZPos);
+                    //IsPressDown = false;
+                    current.position = position;
                 }
             } 
 
@@ -382,7 +383,7 @@ public class PlayerInput : MonoBehaviour
         angles.y += -90;
         current.eulerAngles = angles;
     }
-    
+
     /*private void RotateX()
     {
         var current = Manager.Instance.Current.transform;
@@ -390,5 +391,190 @@ public class PlayerInput : MonoBehaviour
         angles.x += -90;
         current.eulerAngles = angles;
     }*/
+    public void RightButton()
+    {
+        if (CamMovement.rotateCam == false)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+
+            var value = 1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionXFalse(value));
+            if (isMovable)
+            {
+                position.x += value;
+                current.position = position;
+            }
+        }
+        if (CamMovement.rotateCam == true)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+            var value = -1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionRightTrue(value));
+            if (isMovable)
+            {
+                position.z += value;
+
+                current.position = position;
+            }
+        }
+    }
+    public void LeftButton()
+    {
+        if (CamMovement.rotateCam == false)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+            var value = -1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionXFalse(value));
+            if (isMovable)
+            {
+                position.x += value;
+                current.position = position;
+            }
+        }
+        if (CamMovement.rotateCam == true)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+            var value = 1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionLeftTrue(value));
+            if (isMovable)
+            {
+                position.z += value;
+                current.position = position;
+            }
+        }
+
+    }
+    public void UpButton()
+    {
+        if (CamMovement.rotateCam == false)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+            var value = 1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionZFalse(value));
+            if (isMovable)
+            {
+                position.z += value;
+                current.position = position;
+            }
+        }
+        if (CamMovement.rotateCam == true)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+
+            var value = 1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionUpTrue(value));
+            if (isMovable)
+            {
+                position.x += value;
+                current.position = position;
+            }
+        }
+    }
+    public void DownButon()
+    {
+        if (CamMovement.rotateCam == false)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+            var value = -1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionZFalse(value));
+            if (isMovable)
+            {
+                position.z += value;
+                current.position = position;
+            }
+        }
+
+        if (CamMovement.rotateCam == true)
+        {
+            var current = Manager.Instance.Current.transform;
+            var position = current.position;
+            var value = -1;
+            var isMovable = Manager.Instance.IsInside(GetPreviewPositionDownTrue(value));
+            if (isMovable)
+            {
+                position.x += value;
+                current.position = position;
+            }
+        }
+    }
+    private List<Vector3> GetPreviewPositionXFalse(int value)
+    {
+        var result = new List<Vector3>();
+        var listPiece = Manager.Instance.Current.ListPiece;
+        foreach (var piece in listPiece)
+        {
+            var position = piece.position;
+            position.x += value;
+            result.Add(position);
+        }
+        return result;
+    }
+    private List<Vector3> GetPreviewPositionZFalse(int value)
+    {
+        var result = new List<Vector3>();
+        var listPiece = Manager.Instance.Current.ListPiece;
+        foreach (var piece in listPiece)
+        {
+            var position = piece.position;
+            position.z += value;
+            result.Add(position);
+        }
+        return result;
+    }
+    private List<Vector3> GetPreviewPositionRightTrue(int value)
+    {
+        var result = new List<Vector3>();
+        var listPiece = Manager.Instance.Current.ListPiece;
+        foreach (var piece in listPiece)
+        {
+            var position = piece.position;
+            position.z += -1;
+            result.Add(position);
+        }
+        return result;
+    }
+    private List<Vector3> GetPreviewPositionLeftTrue(int value)
+    {
+        var result = new List<Vector3>();
+        var listPiece = Manager.Instance.Current.ListPiece;
+        foreach (var piece in listPiece)
+        {
+            var position = piece.position;
+            position.z += 1;
+            result.Add(position);
+        }
+        return result;
+    }
+    private List<Vector3> GetPreviewPositionUpTrue(int value)
+    {
+        var result = new List<Vector3>();
+        var listPiece = Manager.Instance.Current.ListPiece;
+        foreach (var piece in listPiece)
+        {
+            var position = piece.position;
+            position.x += 1;
+            result.Add(position);
+        }
+        return result;
+    }
+    private List<Vector3> GetPreviewPositionDownTrue(int value)
+    {
+        var result = new List<Vector3>();
+        var listPiece = Manager.Instance.Current.ListPiece;
+        foreach (var piece in listPiece)
+        {
+            var position = piece.position;
+            position.x += -1;
+            result.Add(position);
+        }
+        return result;
+    }
 }
 
