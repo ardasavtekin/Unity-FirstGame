@@ -19,42 +19,32 @@ public class CamMovement : MonoBehaviour
         target = GameObject.FindWithTag("ground");
         target2 = GameObject.FindWithTag("MainCam");
         rawImage = GameObject.FindWithTag("RawImage");
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.G))
         {
             if (rotateCam == false)
             {
                 camTurn();
                 rotateCam = true;
-
             }
             else if (rotateCam == true)
             {
-
                 camNegativeTurn();
                 rotateCam = false;
             }
-
         }
-
-
     }
 
     public void camTurn()
     {
-
         ground.transform.RotateAround(target.transform.position, Vector3.up, 90);
         quad.transform.RotateAround(target.transform.position, Vector3.up, 90);
         target2.SetActive(false);
         rawImage.SetActive(false);
-
     }
 
     public void camNegativeTurn()
@@ -63,35 +53,27 @@ public class CamMovement : MonoBehaviour
         quad.transform.RotateAround(target.transform.position, Vector3.up, -90);
         target2.SetActive(true);
         rawImage.SetActive(true);
-
     }
 
     public void clickButton()
     {
-
         if (rotateCam == false)
         {
             camTurn();
             rotateCam = true;
-
         }
         else if (rotateCam == true)
         {
-
             camNegativeTurn();
             rotateCam = false;
         }
-
-
     }
     public void speed()
     {
         Time.timeScale = 10f;
-
-
     }
 
-    public void rotateY()
+    /*public void rotateY()
     {
         var isRotatable = Manager.Instance.IsInside(GetPreviewRotationYPosition());
         if (isRotatable)
@@ -122,5 +104,5 @@ public class CamMovement : MonoBehaviour
         }
 
         return result;
-    }
+    }*/
 }
