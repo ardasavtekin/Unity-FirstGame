@@ -73,7 +73,7 @@ public class CamMovement : MonoBehaviour
         Time.timeScale = 10f;
     }
 
-    /*public void rotateY()
+    public void rotateY()
     {
         var isRotatable = Manager.Instance.IsInside(GetPreviewRotationYPosition());
         if (isRotatable)
@@ -104,5 +104,5 @@ public class CamMovement : MonoBehaviour
         }
 
         return result;
-    }*/
+    }
 }

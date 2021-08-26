@@ -200,7 +200,7 @@ public class PlayerInput : MonoBehaviour
                 RotateZ();
             }
         }*/
-        if (Input.GetMouseButtonDown(0) )
+        if (IsPressRotateY)
         {
             var isRotatable = Manager.Instance.IsInside(GetPreviewRotationYPosition());
             if (isRotatable)
