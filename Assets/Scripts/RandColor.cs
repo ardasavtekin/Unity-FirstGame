@@ -9,7 +9,26 @@ public class RandColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        index = Random.Range(0, randomMaterial.Length);
+
+        if (ScoreScript.scoreValue < 100)
+        {
+            index = Random.Range(0, randomMaterial.Length -3);
+        }
+        if (ScoreScript.scoreValue > 100 && ScoreScript.scoreValue < 200)
+        {
+            index = Random.Range(0, randomMaterial.Length - 2);
+        }
+        if (ScoreScript.scoreValue > 200 && ScoreScript.scoreValue < 300)
+        {
+            index = Random.Range(0, randomMaterial.Length - 1);
+        }
+        if (ScoreScript.scoreValue > 300)
+        {
+            index = Random.Range(0, randomMaterial.Length );
+        }
+        Debug.Log("" + ScoreScript.scoreValue);
+       
+        //index = Random.Range(0, randomMaterial.Length);
         gameObject.GetComponent<Renderer>().material = randomMaterial[index];
         if (index == 0)
         {
@@ -27,9 +46,6 @@ public class RandColor : MonoBehaviour
         {
             gameObject.name = "blue";
         }
-
     }
-    
 
-  
 }

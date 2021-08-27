@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class  BlockController: MonoBehaviour
 {
-    public MeshRenderer mr;
+    
     public List<Transform> ListPiece => listPiece;
     [SerializeField] private List<Transform> listPiece = new List<Transform>();
 
@@ -47,7 +47,6 @@ public class  BlockController: MonoBehaviour
                     int y = Mathf.RoundToInt(piece.position.y);
                     int z = Mathf.RoundToInt(piece.position.z);
                     Manager.Instance.Grid[x, y, z] = true;
-
                    // Manager.Instance.ListHistory.Add(piece.gameObject);
 
                     if (piece.position.y >= 27)

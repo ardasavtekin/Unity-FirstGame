@@ -82,18 +82,22 @@ public class Manager : MonoBehaviour
 
             if (x < 0 || x >GridSizeX)
             {
+                //Debug.Log("x");
                 return false;
             }
             if (z < 0 || z > GridSizeZ)
             {
+                //Debug.Log("z");
                 return false;
             }
             if(y <1.5f)
             {
+                //Debug.Log("y");
                 return false;
             }
             if (Grid[x, y, z ] )
             {
+                //Debug.Log("xyz");
                 return false;
             }
         }
