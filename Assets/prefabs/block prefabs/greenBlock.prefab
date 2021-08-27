@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3898598038750871214}
   - component: {fileID: 6732798274016728031}
   - component: {fileID: 4880756732386030164}
+  - component: {fileID: 1819873346689224889}
   m_Layer: 0
   m_Name: greenBlock
   m_TagString: Material2
@@ -93,3 +94,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1819873346689224889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877100259160161762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0959ef0161babb042ab879bdeac0a3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomMaterial:
+  - {fileID: 2100000, guid: f852ed7138820044bbd4ecbc8ec53fe6, type: 2}
+  - {fileID: 2100000, guid: c7c130d51ac74e14d8ff6adc16e58eb8, type: 2}
+  - {fileID: 2100000, guid: 37e2c334b5262a74e85f12f614cdf6d0, type: 2}
+  - {fileID: 2100000, guid: ae793d7a882fbaf48903622e7bef63fa, type: 2}

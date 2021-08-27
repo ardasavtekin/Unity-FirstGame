@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//selam aag 2. kex değiştiffsgh
+
 public class  BlockController: MonoBehaviour
 {
     public MeshRenderer mr;
@@ -40,6 +40,7 @@ public class  BlockController: MonoBehaviour
             }
             else
             {
+                
                 foreach(var piece in listPiece)
                 {
                     int x = Mathf.RoundToInt(piece.position.x);
@@ -55,7 +56,7 @@ public class  BlockController: MonoBehaviour
                         SceneManager.LoadScene(sceneId);
                     }
                     
-                    if (listPiece.IndexOf(piece) == 0)
+                    if (piece.name== "red")
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
 
@@ -484,7 +485,7 @@ public class  BlockController: MonoBehaviour
 
 
                     }
-                    if (listPiece.IndexOf(piece) == 1)
+                    if (piece.name == "green")
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
 
@@ -902,7 +903,7 @@ public class  BlockController: MonoBehaviour
                         yEksenindekiler.Clear();
                         zEksenindekiler.Clear();
                     }
-                    if (listPiece.IndexOf(piece) == 2)
+                    if (piece.name == "yellow")
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
 
@@ -1320,7 +1321,7 @@ public class  BlockController: MonoBehaviour
                         yEksenindekiler.Clear();
                         zEksenindekiler.Clear();
                     }
-                    if (listPiece.IndexOf(piece) == 3)
+                    if (piece.name == "blue")
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
 
