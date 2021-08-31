@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 
 public class  BlockController: MonoBehaviour
@@ -49,16 +50,14 @@ public class  BlockController: MonoBehaviour
                     Manager.Instance.Grid[x, y, z] = true;
                    // Manager.Instance.ListHistory.Add(piece.gameObject);
 
-                    if (piece.position.y >= 27)
+                    if (piece.position.y >= 19)
                     {
                         int sceneId = 2;
                         SceneManager.LoadScene(sceneId);
                     }
-                    
                     if (piece.name== "red")
                     {
                         Manager.Instance.gameobjectGrid[x, y, z] = piece.gameObject;
-
                         Manager.Instance.ColorGrid[x, y, z] = "red";
                         for (int i = x + 1; i <= Manager.GridSizeX; i++)
                         {
@@ -131,7 +130,6 @@ public class  BlockController: MonoBehaviour
                             {
                                 break;
                             }
-                            
                         }
                         if(xEksenindekiler.Count >=3)
                         {
@@ -166,87 +164,37 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-                                                
                                             }
-                                           
                                         }
                                         var o = Mathf.RoundToInt(position.y);
-
+                                        
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
 
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
-
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             xEksenindekiler.Clear();
                         }
@@ -280,86 +228,36 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
 
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             yEksenindekiler.Clear();
                         }
@@ -395,94 +293,42 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
 
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             zEksenindekiler.Clear();
                         }
                         xEksenindekiler.Clear();
                         yEksenindekiler.Clear();
                         zEksenindekiler.Clear();
-
-
                     }
                     if (piece.name == "green")
                     {
@@ -597,6 +443,7 @@ public class  BlockController: MonoBehaviour
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
+
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
@@ -621,52 +468,10 @@ public class  BlockController: MonoBehaviour
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
@@ -733,52 +538,9 @@ public class  BlockController: MonoBehaviour
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
@@ -845,52 +607,9 @@ public class  BlockController: MonoBehaviour
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
@@ -978,7 +697,6 @@ public class  BlockController: MonoBehaviour
                             {
                                 break;
                             }
-
                         }
                         if (xEksenindekiler.Count >= 3)
                         {
@@ -1009,82 +727,33 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
 
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
@@ -1121,86 +790,36 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
 
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             yEksenindekiler.Clear();
                         }
@@ -1233,86 +852,36 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
 
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             zEksenindekiler.Clear();
                         }
@@ -1396,7 +965,6 @@ public class  BlockController: MonoBehaviour
                             {
                                 break;
                             }
-
                         }
                         if (xEksenindekiler.Count >= 3)
                         {
@@ -1427,86 +995,35 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
-
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             xEksenindekiler.Clear();
                         }
@@ -1540,86 +1057,35 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
-
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             yEksenindekiler.Clear();
                         }
@@ -1652,176 +1118,65 @@ public class  BlockController: MonoBehaviour
                                                 Manager.Instance.Grid[j, p, l] = false;
                                                 position.y--;
                                                 gameobject.transform.position = position;
-
                                             }
-
                                         }
                                         var o = Mathf.RoundToInt(position.y);
 
                                         if (Manager.Instance.ColorGrid[j, p, l] == "red")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "red";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "blue")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "blue";
-
                                         }
                                         if (Manager.Instance.ColorGrid[j, p, l] == "green")
                                         {
                                             Manager.Instance.ColorGrid[j, o, l] = "green";
-
                                         }
-
                                         Manager.Instance.Grid[j, o, l] = true;
                                         Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
                                     }
-                                }
-                                foreach (var gameobject in Manager.Instance.ListHistory)
-                                {
-                                    if (gameobject.transform.position.x == j &&
-                                        gameobject.transform.position.z == l &&
-                                        gameobject.transform.position.y > k)
+                                    if (gameobject.transform.position.x == j && gameobject.transform.position.z == l)
                                     {
-                                        var position = gameobject.transform.position;
-                                        var p = Mathf.RoundToInt(position.y);
-
-                                        for (int i = k; i > 1.5f; i--)
-                                        {
-                                            if (Manager.Instance.Grid[j, i, l] == false)
-                                            {
-                                                Manager.Instance.Grid[j, p, l] = false;
-                                                position.y--;
-                                                gameobject.transform.position = position;
-
-                                            }
-
-                                        }
-                                        var o = Mathf.RoundToInt(position.y);
-
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "red")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "red";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "yellow")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "yellow";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "blue")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "blue";
-
-                                        }
-                                        if (Manager.Instance.ColorGrid[j, p, l] == "green")
-                                        {
-                                            Manager.Instance.ColorGrid[j, o, l] = "green";
-
-                                        }
-
-                                        Manager.Instance.Grid[j, o, l] = true;
-                                        Manager.Instance.gameobjectGrid[j, o, l] = gameobject.gameObject;
+                                        gameobject.transform.DOJump(new Vector3(gameobject.transform.position.x, gameobject.transform.position.y, gameobject.transform.position.z), 5, 1, 2.0f, false);
                                     }
                                 }
-
                                 Manager.Instance.ListHistory.Remove(item);
-
                             }
                             zEksenindekiler.Clear();
                         }
                         xEksenindekiler.Clear();
                         yEksenindekiler.Clear();
                         zEksenindekiler.Clear();
-
                     }
                 }
-              
-                
                 break;
             }
-            
-
         }
         Time.timeScale = 1;
         Manager.Instance.Spawn();
     }
-
     private List<Vector3> GetPreviewPosition()
     {
         var result = new List<Vector3>();
         foreach(var piece in listPiece)
         {
             var position = piece.position;
-            
             position.y--;
             result.Add(position);
-
         }
         return result;
     }
    
-
     private void Move()
     {
         var position = transform.position;
         position.y--;
         transform.position = position;
     }
-    
-
-   
-
-    /*public void MoveXZ()
-    {
-        
-        if (transform.position.x < 4)
-        {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-
-                transform.position += new Vector3(1, 0, 0);
-                
-                //transform.position = new Vector3(transform.position.x + 1, transform.position.y,transform.position.z);              
-            }
-        }
-
-        if (transform.position.x > -4)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                transform.position += new Vector3(-1, 0, 0);
-                //transform.position = new Vector3(transform.position.x - 1, transform.position.y,transform.position.z);
-            }
-        }
-        if (transform.position.z < 4)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                transform.position += new Vector3(0, 0, +1);
-                //transform.position = new Vector3(transform.position.x , transform.position.y, transform.position.z+1);
-            }
-        }
-        if (transform.position.z > -4)
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                transform.position += new Vector3(0, 0, -1);
-                
-                //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1 );
-            }
-        }
-
-    }*/
-    /*private void OnTriggerEnter(Collider collison)
-    {
-        placed = true;
-       
-    }*/
 }

@@ -26,7 +26,7 @@ public class RandColor : MonoBehaviour
         {
             index = Random.Range(0, randomMaterial.Length );
         }
-        Debug.Log("" + ScoreScript.scoreValue);
+        //Debug.Log("" + ScoreScript.scoreValue);
        
         //index = Random.Range(0, randomMaterial.Length);
         gameObject.GetComponent<Renderer>().material = randomMaterial[index];
