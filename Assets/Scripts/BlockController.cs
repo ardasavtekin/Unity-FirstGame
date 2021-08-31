@@ -195,7 +195,12 @@ public class  BlockController: MonoBehaviour
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
+                                foreach (var gameobject in Manager.Instance.ListHistory)
+                                {
+                                    gameobject.transform.DOShakeScale(1, 1, 5, 1, false);
+                                }
                             }
+
                             xEksenindekiler.Clear();
                         }
                         if (yEksenindekiler.Count >= 3)
@@ -258,6 +263,10 @@ public class  BlockController: MonoBehaviour
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
+                                foreach (var gameobject in Manager.Instance.ListHistory)
+                                {
+                                    gameobject.transform.DOShakeScale(1, 1, 5, 1, false);
+                                }
                             }
                             yEksenindekiler.Clear();
                         }
@@ -323,6 +332,10 @@ public class  BlockController: MonoBehaviour
                                     }
                                 }
                                 Manager.Instance.ListHistory.Remove(item);
+                                foreach (var gameobject in Manager.Instance.ListHistory)
+                                {
+                                    gameobject.transform.DOShakeScale(1, 1, 5, 1, false);
+                                }
                             }
                             zEksenindekiler.Clear();
                         }
